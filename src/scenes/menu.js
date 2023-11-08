@@ -32,20 +32,24 @@ class Menu extends Phaser.Scene {
         };
         this.add.text(game.config.width/2, game.config.height/2.5 - borderUISize - borderPadding, 'WELCOME TO SPACE FOOTBALL RUN!', menuConfig).setOrigin(0.5);
 
-        this.add.text(game.config.width/2, game.config.height/2.1, 'Press H for instructions', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2.1, 'Press I for Instructions', menuConfig).setOrigin(0.5);
         menuConfig.color = 'red';
         this.add.text(game.config.width/2, game.config.height/1.68, 'Press -> to start game', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/1.4, 'Press C for credits', menuConfig).setOrigin(0.5);
 
         //define keys
-      //  keyH = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.H);
-        //keyC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C);
-        //keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+        keyI = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.I);
     }
 
     
     update(){
         this.background.tilePositionX -= 2; 
+
+        if (Phaser.Input.Keyboard.JustDown(keyI)) {
+             this.scene.start("instructionScene");    
+        }
+
+
     }
 }
 

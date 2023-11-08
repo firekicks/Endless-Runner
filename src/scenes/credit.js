@@ -1,11 +1,12 @@
-class Instruction extends Phaser.Scene {
+class Credit extends Phaser.Scene {
     constructor(){
-        super("instructionScene");
+        super("creditScene");
     }
 
     create() {
         this.background = this.add.tileSprite(0, 0, 640, 480, 'background').setOrigin(0, 0);
-   
+    
+
         let instructionConfig = {
             fontFamily: 'Merci', 
             fontSize: '25px', 
@@ -42,17 +43,23 @@ class Instruction extends Phaser.Scene {
 
         
 
-        keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+        keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);  
+    
+
         
-   
+
+    
     }
+
     update(){
 
         this.background.tilePositionX -= 2;
-    
 
         if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
-            this.scene.start("menuScene");    
+    
+              this.scene.start("menuScene");    
         }
     }
+
+
 }

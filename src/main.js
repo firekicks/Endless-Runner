@@ -2,13 +2,13 @@ let config = {
     type: Phaser.AUTO,
     width: 640,
     height: 480,
-    scene: [Menu]
+    scene: [Menu, Instruction, Credit]
 }
 
 let game = new Phaser.Game(config);
 
 //keyboard
-let keySpace, keyRIGHT, keyLEFT; 
+let keySpace, keyRIGHT, keyLEFT, keyI, keyC; 
 
 
 // set UI sizes
