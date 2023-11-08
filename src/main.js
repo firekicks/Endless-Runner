@@ -8,7 +8,7 @@ let config = {
 let game = new Phaser.Game(config);
 
 //keyboard
-let keySpace, keyRIGHT, keyLEFT, keyI, keyC; 
+let keySpace, keyRIGHT, keyLEFT, keyI, keyC, keyP; 
 
 
 // set UI sizes

@@ -12,10 +12,12 @@ class Menu extends Phaser.Scene {
     create() {
         this.background = this.add.tileSprite(0, 0, 640, 480, 'background').setOrigin(0, 0);
 
-       //add music, set volume, play it
-       this.backgroundmusic = this.sound.add('backgroundmusic', {volume: 0.4});   
-       this.backgroundmusic.loop = true; 
-       this.backgroundmusic.play();
+       //add music, set volume, play it 
+       //music will not restart between the scenes 
+       if (!this.sound.get('backgroundmusic')) {
+        this.backgroundmusic = this.sound.add('backgroundmusic', { volume: 0.1, loop: true });
+        this.backgroundmusic.play();
+    }
         
         // Menu configuration
         let menuConfig = {
@@ -30,15 +32,16 @@ class Menu extends Phaser.Scene {
             },
             fixedWidth: 0
         };
-        this.add.text(game.config.width/2, game.config.height/2.5 - borderUISize - borderPadding, 'WELCOME TO SPACE FOOTBALL RUN!', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2.15 - borderUISize - borderPadding, 'WELCOME TO FOOTBALL RUN!', menuConfig).setOrigin(0.5);
 
-        this.add.text(game.config.width/2, game.config.height/2.1, 'Press I for Instructions', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2, 'Press I for Instructions', menuConfig).setOrigin(0.5);
         menuConfig.color = 'red';
-        this.add.text(game.config.width/2, game.config.height/1.68, 'Press -> to start game', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/1.68, 'Press P to start game', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/1.4, 'Press C for credits', menuConfig).setOrigin(0.5);
 
         //define keys
         keyI = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.I);
+        keyC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C);
     }
 
     
@@ -49,6 +52,9 @@ class Menu extends Phaser.Scene {
              this.scene.start("instructionScene");    
         }
 
+        if (Phaser.Input.Keyboard.JustDown(keyC)){
+            this.scene.start("creditScene")
+        }
 
     }
 }

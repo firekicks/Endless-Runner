@@ -39,7 +39,7 @@ class Credit extends Phaser.Scene {
         `;
         this.add.text(game.config.width/2, game.config.height/7 - borderUISize - borderPadding, 'Instructions', instructionConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, 250, mssg , mssgConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, 400, 'Click <- to go back to menu' , instructionConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, 375, 'Click <- to go back to menu' , instructionConfig).setOrigin(0.5);
 
         
 
