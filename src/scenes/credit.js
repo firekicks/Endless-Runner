@@ -2,13 +2,11 @@ class Credit extends Phaser.Scene {
     constructor(){
         super("creditScene");
     }
-
-    create() {
-        this.background = this.add.tileSprite(0, 0, 640, 480, 'background').setOrigin(0, 0);
-    
-
-        let instructionConfig = {
-            fontFamily: 'Merci', 
+    create(){
+        this.background= this.add.tileSprite(0, 0, 640, 480, 'background').setOrigin(0,0);
+        
+        let creditConfig = {
+            fontFamily: 'Georgia', 
             fontSize: '25px', 
             backgroundColor: 'transparent',
             color: 'red',
@@ -21,8 +19,8 @@ class Credit extends Phaser.Scene {
         };
 
         let mssgConfig = {
-            fontFamily: 'Merci', 
-            fontSize: '19px', 
+            fontFamily: 'Georgia', 
+            fontSize: '10px', 
             backgroundColor: 'transparent',
             color: 'green',
             align: 'center',
@@ -32,34 +30,34 @@ class Credit extends Phaser.Scene {
             },
             fixedWidth: 0
         };
-        const mssg = `SpaceFootballRun has 2 objectives: Run and Dodge the football coming at you!
-       
+        const mssg = 
+        `Developed by: Atri Mehta 
+        
 
-        Use the space bar to jump. Good Luck!!
+        Assets: Football sprite: https://www.deviantart.com/jynxedones/art/BW-Football-Player-OW-Walking-Sprite-485628399
+                Jump Sound: https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=6462
+                Music: https://uppbeat.io/t/matrika/action-replay/https://www.chosic.com/download-audio/27878/
+                Art edited on PixelArt
+
+        Modified the sprite sheet to fit game. 
+
         `;
-        this.add.text(game.config.width/2, game.config.height/7 - borderUISize - borderPadding, 'Instructions', instructionConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, 250, mssg , mssgConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, 375, 'Click <- to go back to menu' , instructionConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/7 - borderUISize - borderPadding, 'Credits', creditConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, 200, mssg , mssgConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, 300, 'Click <- to go back to menu' , creditConfig).setOrigin(0.5);
+
+        keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
 
         
 
-        keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);  
-    
-
-        
-
-    
     }
-
     update(){
 
         this.background.tilePositionX -= 2;
 
         if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
-    
               this.scene.start("menuScene");    
         }
     }
-
 
 }
