@@ -9,7 +9,7 @@ class Play extends Phaser.Scene {
 
         this.load.image('footballmissile', './assets/footballmissile.png');
 
-        this.load.spritesheet('footballplayer', './assets/footballplayer.png', {frameHeight: 264, frameWidth: 69});
+        this.load.spritesheet('footballplayer', './assets/footballplayer.png', {frameHeight: 88, frameWidth: 23});
 
     }
 
@@ -26,7 +26,7 @@ class Play extends Phaser.Scene {
         this.player = this.physics.add.sprite(100, this.sys.game.config.height / 2, 'footballplayer');
         this.player.setCollideWorldBounds(true); 
 
-        this.createAnimations('playerRun', 'footballplayer', 0, 3, -1, 18);
+        this.createAnimations('playerRun', 'footballplayer', 0, 3, -1, 10);
 
         
 
