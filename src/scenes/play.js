@@ -27,6 +27,7 @@ class Play extends Phaser.Scene {
         this.player.setCollideWorldBounds(true); 
 
         this.createAnimations('playerRun', 'footballplayer', 0, 3, -1, 10);
+        this.player.play('playerRun');
 
         
 
