@@ -36,7 +36,7 @@ class Menu extends Phaser.Scene {
 
         this.add.text(game.config.width/2, game.config.height/2, 'Press I for Instructions', menuConfig).setOrigin(0.5);
         menuConfig.color = 'red';
-        this.add.text(game.config.width/2, game.config.height/1.68, 'Press P to Play', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/1.68, 'Press P to start game', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/1.4, 'Press C for credits', menuConfig).setOrigin(0.5);
 
         //define keys
