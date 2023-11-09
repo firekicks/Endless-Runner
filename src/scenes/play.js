@@ -15,8 +15,6 @@ class Play extends Phaser.Scene {
     }
 
 create() {
-    this.rocket = new Rocket(this, game.config.width, borderUISize*9 + borderPadding*6, 'rocket').setScale(0.5);
-
     this.gameOver = false; 
 
     this.background = this.add.tileSprite(0, 0, 640, 480, 'background').setOrigin(0, 0);
