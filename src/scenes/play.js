@@ -68,6 +68,9 @@ create() {
     this.timer = this.time.addEvent({delay: 1000, callback: this.updateScore, callbackScope: this, loop: true });
     this.scoreValue = this.add.text(140, 50, this.playerScore, scoreConfig);
 
+    this.rocket = new Rocket(this, game.config.width, borderUISize*9 + borderPadding*6, 'rocket').setScale(0.5);
+
+
 } 
 
 
@@ -84,6 +87,37 @@ createAnimations(animKey, spriteKey, startFrame, endFrame, loopTimes, frameRate)
         repeat: loopTimes,
         });
     }
+
+    checkCollision(player, rocket) {
+        //simple AABB checking 
+       if(player.x < rocket.x + rocket.width && player.x + 5 > rocket.x && player.y < rocket.y + 70 && 40 + player.y > rocket.y){
+           return true;
+       }
+       else{
+           return false; 
+       }
+
+   }
+   rocketExplode(rocket){
+    const emitter = this.add.particles(400, 250, 'explosion', {
+        lifespan: 4000,
+        speed: { min: 150, max: 250 },
+        scale: { start: 0.8, end: 0 },
+        gravityX: rocket.x,
+        gravityY: rocket.y,
+        blendMode: 'ADD',
+        emitting: false
+    });
+    //temporarily hide ship 
+    rocket.alpha = 0; 
+    //create explosion
+    emitter.explode(16);
+    
+    rocket.reset(); //reset position of ship
+    rocket.alpha = 1;  //make ship visible
+
+    
+   }
 
 updateScore() {
     this.playerScore++; // Increment the player's score
