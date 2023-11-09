@@ -9,7 +9,7 @@ class Play extends Phaser.Scene {
 
         this.load.image('footballmissile', './assets/footballmissile.png');
 
-        this.load.spritesheet('footballplayer', './assets/footballplayer.png', {frameHeight: 88, frameWidth: 23});
+        this.load.spritesheet('footballplayer', './assets/footballplayer.png', {frameHeight: 66, frameWidth: 69});
 
     }
 
@@ -26,8 +26,17 @@ class Play extends Phaser.Scene {
         this.player = this.physics.add.sprite(100, this.sys.game.config.height / 2, 'footballplayer');
         this.player.setCollideWorldBounds(true); 
 
+        this.player.y -= 10
         this.createAnimations('playerRun', 'footballplayer', 0, 3, -1, 10);
         this.player.play('playerRun');
+        this.player.destroyed = false; 
+        
+
+
+        //jump
+        this.createAnimations('jump', 'player', 2, 2, -1, 10);
+        this.jumpAudio = this.sound.add('jump', {volume: 0.5});
+        keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
         
 
@@ -44,6 +53,16 @@ class Play extends Phaser.Scene {
 
     update() {
         this.background.tilePositionX -= 2;
+
+        if (Phaser.Input.Keyboard.JustDown(keySpace) && this.player.body.onFloor()) {
+        this.player.setVelocityY(-160);
+        this.player.play('jump');
+
+        // Initialize jumpAudio if it's not already initialized
+        if (!this.jumpAudio.isPlaying) {
+            this.jumpAudio.play();
+        }
+    }
         
     } 
 }
