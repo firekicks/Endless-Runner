@@ -7,14 +7,16 @@ class Play extends Phaser.Scene {
         this.load.audio('explosion','./assets/explosion.wav');
         this.load.audio('jump','./assets/jump.mp3');
 
-        this.load.image('missile', './assets/missile.png');
-        this.load.image('ground', './assets/ground.png');
+        this.load.image('rocket','./assets/rocket.png');
+        this.load.image('ground','./assets/ground.png');
 
         this.load.spritesheet('footballplayer', './assets/footballplayer.png', {frameHeight: 66, frameWidth: 69});
 
     }
 
 create() {
+    this.rocket = new Rocket(this, game.config.width, borderUISize*9 + borderPadding*6, 'rocket').setScale(0.5);
+
     this.gameOver = false; 
 
     this.background = this.add.tileSprite(0, 0, 640, 480, 'background').setOrigin(0, 0);
@@ -67,8 +69,6 @@ create() {
   
     this.timer = this.time.addEvent({delay: 1000, callback: this.updateScore, callbackScope: this, loop: true });
     this.scoreValue = this.add.text(140, 50, this.playerScore, scoreConfig);
-
-    this.missile = new Missile(this, game.config.width, borderUISize*9 + borderPadding*6, 'missile').setScale(0.5);
 
 } 
 

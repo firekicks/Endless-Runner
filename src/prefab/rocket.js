@@ -1,5 +1,4 @@
-//missile prefab
-class Missile extends Phaser.Physics.Arcade.Sprite {
+class Rocket extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y, texture, frame) {
         super(scene, x, y, texture, frame);
 
@@ -20,4 +19,3 @@ class Missile extends Phaser.Physics.Arcade.Sprite {
 
     }
 }
-
