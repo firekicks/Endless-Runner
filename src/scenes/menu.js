@@ -17,7 +17,7 @@ class Menu extends Phaser.Scene {
        if (!this.sound.get('backgroundmusic')) {
         this.backgroundmusic = this.sound.add('backgroundmusic', { volume: 0.1, loop: true });
         this.backgroundmusic.play();
-    }
+        }
         
         // Menu configuration
         let menuConfig = {
@@ -36,12 +36,13 @@ class Menu extends Phaser.Scene {
 
         this.add.text(game.config.width/2, game.config.height/2, 'Press I for Instructions', menuConfig).setOrigin(0.5);
         menuConfig.color = 'red';
-        this.add.text(game.config.width/2, game.config.height/1.68, 'Press P to start game', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/1.68, 'Press P to Play', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/1.4, 'Press C for credits', menuConfig).setOrigin(0.5);
 
         //define keys
         keyI = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.I);
         keyC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C);
+        keyP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
     }
 
     
@@ -54,6 +55,10 @@ class Menu extends Phaser.Scene {
 
         if (Phaser.Input.Keyboard.JustDown(keyC)){
             this.scene.start("creditScene")
+        }
+
+        if (Phaser.Input.Keyboard.JustDown(keyP)){
+            this.scene.start("playScene")
         }
 
     }
