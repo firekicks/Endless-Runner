@@ -9,8 +9,7 @@ class Play extends Phaser.Scene {
 
         this.load.image('footballmissile', './assets/footballmissile.png');
 
-        this.load.spritesheet('footballplayer', './assets/footballplayer.png', {frameHeight: 63, frameWidth: 125});
-        this.load.spritesheet('particle', './assets/particle.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 4});
+        this.load.spritesheet('footballplayer', './assets/footballplayer.png', {frameHeight: 264, frameWidth: 69});
 
     }
 
